@@ -82,11 +82,17 @@ body{background:#000;color:var(--white);font-family:var(--fm);min-height:100dvh;
 @media(max-width:900px){#cur{display:none;}}
 
 /* CANVASES */
-#bgc{position:fixed;inset:0;z-index:0;pointer-events:none;}
-#circ{position:fixed;inset:0;z-index:1;pointer-events:none;}
-#scan{position:fixed;inset:0;z-index:2;pointer-events:none;}
-.crt{position:fixed;inset:0;z-index:3;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,0.08) 0,rgba(0,0,0,0.08) 1px,transparent 1px,transparent 3px);}
-.vig{position:fixed;inset:0;z-index:3;pointer-events:none;background:radial-gradient(ellipse at center,transparent 25%,rgba(0,0,0,0.97) 100%);}
+#bgc{position:fixed;inset:0;z-index:0;pointer-events:none;will-change:transform;transform:translateZ(0);}
+#circ{position:fixed;inset:0;z-index:1;pointer-events:none;will-change:transform;transform:translateZ(0);}
+#scan{position:fixed;inset:0;z-index:2;pointer-events:none;will-change:transform;transform:translateZ(0);}
+.crt{position:fixed;inset:0;z-index:3;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,0.08) 0,rgba(0,0,0,0.08) 1px,transparent 1px,transparent 3px);will-change:transform;transform:translateZ(0);}
+.vig{position:fixed;inset:0;z-index:3;pointer-events:none;background:radial-gradient(ellipse at center,transparent 25%,rgba(0,0,0,0.97) 100%);will-change:transform;transform:translateZ(0);}
+@media(max-width:900px){
+  body{touch-action:pan-y;-webkit-overflow-scrolling:touch;}
+  #circ{display:none;}
+  .tagline-main{display:none;}
+  .tagline{padding-top:0;border-top:none;}
+}
 
 /* NAV - animates in */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
@@ -271,7 +277,7 @@ body{background:#000;color:var(--white);font-family:var(--fm);min-height:100dvh;
     <div class="eyebrow"><span class="pip"></span><span id="etype"></span></div>
     <h1 class="bigname" id="bigname" data-g="0xAbhiram"><span class="rx">0x</span><span id="ndec">Abhiram</span></h1>
     <div class="role-line"><span class="r">&gt;_</span>&nbsp;<span id="roletxt"></span><span class="bcur">*</span></div>
-    <p class="tagline">Breaking things before bad actors do.<br><span class="r">VAPT - Cloud - AI Risk - AppSec - Red Team</span></p>
+    <p class="tagline"><span class="tagline-main">Breaking things before bad actors do.<br></span><span class="r">VAPT - Cloud - AI Risk - AppSec - Red Team</span></p>
     <div class="stat-row">
       <div><span class="stat-n" id="s1" data-t="47">0</span><span class="stat-l">Engagements</span></div>
       <div><span class="stat-n" id="s2" data-t="120">0</span><span class="stat-l">Vulns Found</span></div>
@@ -328,6 +334,7 @@ body{background:#000;color:var(--white);font-family:var(--fm);min-height:100dvh;
 
 // CIRCUIT BOARD
 (function(){
+  if(window.innerWidth<=900)return;
   var c=document.getElementById('circ'),x=c.getContext('2d'),W,H,traces=[],pulses=[];
   var GRID=40;
   function rsz(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;seed();}
