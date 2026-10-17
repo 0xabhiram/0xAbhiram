@@ -1,0 +1,15 @@
+# 0xAbhiram
+
+> Abhiram Seetharaghava Sathish (0xAbhiram). Product Security Engineer at Exotel, Bangalore.
+
+I secure web applications, APIs, and cloud infrastructure through hands-on security assessments, penetration testing, and threat modeling. Work spans vulnerability management, AWS and Azure security, secure SDLC, and security automation.
+
+Focus: real-world attack paths, stronger security controls, and helping teams build secure products.
+
+- Site: https://0xabhiram.netlify.app/
+- Blog: https://0xabhiram-blogs.vercel.app/
+- GitHub: https://github.com/0xabhiram
+- LinkedIn: https://www.linkedin.com/in/Abhiramss
+- X: https://x.com/AbhiramSScr7
+- Email: abhiram6542@gmail.com
+- Resume: https://0xabhiram.netlify.app/resume/Abhiram_SS-CV.pdf

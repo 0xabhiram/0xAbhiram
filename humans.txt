@@ -1,0 +1,13 @@
+/* TEAM */
+Name: Abhiram Seetharaghava Sathish
+Handle: 0xAbhiram
+Role: Product Security Engineer
+Location: Bangalore, India
+Contact: abhiram6542@gmail.com
+Site: https://0xabhiram.netlify.app/
+
+/* SITE */
+Last update: 2026/10/17
+Language: English
+Standards: HTML5, CSS3
+Doctype: HTML5
