@@ -8,6 +8,8 @@ Focus: real-world attack paths, stronger security controls, and helping teams bu
 
 - Site: https://0xabhiram.netlify.app/
 - Blog: https://0xabhiram-blogs.vercel.app/
+- AWS Attack Paths: https://0xabhiram-blogs.vercel.app/post-aws-study.html
+- The HTTPS Illusion: https://0xabhiram-blogs.vercel.app/post-burp.html
 - GitHub: https://github.com/0xabhiram
 - LinkedIn: https://www.linkedin.com/in/Abhiramss
 - X: https://x.com/AbhiramSScr7
