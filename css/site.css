@@ -1,10 +1,10 @@
 :root {
-  --bg: #050505;
+  --bg: #071018;
   --fg: #f4f1ec;
-  --muted: #8b8580;
-  --faint: #4d4844;
-  --line: rgba(244, 241, 236, 0.1);
-  --accent: #ff453a;
+  --muted: #9aa3ad;
+  --faint: #5c6772;
+  --line: rgba(180, 220, 235, 0.12);
+  --accent: #00d6ff;
   --ui: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
   --nav-h: 4.25rem;
@@ -43,7 +43,7 @@ img, svg, canvas { display: block; max-width: 100%; }
 .skip { position: absolute; left: -999px; }
 .skip:focus {
   left: 1rem; top: 1rem; z-index: 80;
-  background: var(--accent); color: #fff; padding: .5rem .8rem;
+  background: var(--accent); color: #041018; padding: .5rem .8rem;
 }
 
 #field {
@@ -94,12 +94,12 @@ img, svg, canvas { display: block; max-width: 100%; }
 .cta {
   display: inline-flex; align-items: center; justify-content: center;
   font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
-  background: var(--accent); color: #fff; padding: .62rem .95rem;
+  background: var(--accent); color: #041018; padding: .62rem .95rem;
   min-height: 44px;
   border-radius: 2px;
   transition: transform .2s var(--ease), box-shadow .2s;
 }
-.cta:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(255,69,58,.28); }
+.cta:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(0,214,255,.28); }
 .cta:active { transform: scale(0.98); }
 .cta.ghost {
   background: transparent; color: var(--fg);
@@ -125,10 +125,10 @@ main { padding: 0 var(--pad) 6rem; max-width: min(100%, calc(var(--max) + 9rem))
 .meta > span:nth-child(2)::before { content: none; margin: 0; }
 .pip {
   width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
-  box-shadow: 0 0 0 0 rgba(255,69,58,.5);
+  box-shadow: 0 0 0 0 rgba(0,214,255,.5);
   animation: pip 1.8s ease-in-out infinite;
 }
-@keyframes pip { 50% { box-shadow: 0 0 0 8px rgba(255,69,58,0); } }
+@keyframes pip { 50% { box-shadow: 0 0 0 8px rgba(0,214,255,0); } }
 h1 {
   font-size: clamp(2.35rem, 11vw, 7.4rem);
   font-weight: 560;
@@ -175,7 +175,7 @@ section { padding: 7rem 0 1rem; border-top: 1px solid var(--line); }
 .panel {
   position: relative;
   z-index: 3;
-  background: #0c0c0c;
+  background: #0c1824;
   border: 1px solid var(--line);
   padding: 1.15rem 1.2rem;
 }
@@ -199,7 +199,7 @@ section { padding: 7rem 0 1rem; border-top: 1px solid var(--line); }
   min-height: 100%;
   transition: border-color .2s;
 }
-.card:hover, .card:active { border-color: rgba(255,69,58,.45); }
+.card:hover, .card:active { border-color: rgba(0,214,255,.45); }
 .idx { font-size: .62rem; color: var(--accent); letter-spacing: .16em; margin-bottom: .7rem; }
 .card h3, .job h3, .mark h3 { font-size: 1.05rem; font-weight: 590; letter-spacing: -.02em; }
 .card p { color: var(--muted); margin-top: .45rem; font-size: .95rem; }
@@ -400,7 +400,7 @@ section:not(.hero) {
   height: 100%;
   pointer-events: none;
 }
-body { background: #050505; }
+body { background: #071018; }
 #field, .wash, .cursor { display: none; }
 .hero {
   position: relative;
@@ -416,9 +416,13 @@ body { background: #050505; }
   border-top: 0;
 }
 .hero {
-  background:
-    linear-gradient(180deg, rgba(5,5,5,.28) 0%, rgba(5,5,5,.08) 42%, rgba(5,5,5,.55) 100%),
-    url('../hero.jpg') center 58% / cover no-repeat;
+  background-color: #071018;
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.04) 46%, rgba(0,0,0,.28) 100%),
+    url('../hero.jpg?v=68');
+  background-repeat: no-repeat;
+  background-position: center, center center;
+  background-size: 100% 100%, cover;
 }
 .hero::before { content: none; }
 .hero-copy {
@@ -481,8 +485,8 @@ html.motion .hero-copy > :nth-child(4) { animation-delay: .72s; }
 }
 html.motion .hero h1 .acc { animation: ember 3.2s ease-in-out 1.2s infinite; }
 @keyframes ember {
-  0%, 100% { text-shadow: 0 0 0 rgba(255, 69, 58, 0); }
-  50% { text-shadow: 0 0 18px rgba(255, 69, 58, .55); }
+  0%, 100% { text-shadow: 0 0 0 rgba(0, 214, 255, 0); }
+  50% { text-shadow: 0 0 18px rgba(0, 214, 255, .55); }
 }
 html.motion .lift .piece {
   opacity: 0;
@@ -501,8 +505,8 @@ section:not(.hero) {
   padding: 2.4rem 1.75rem 1.6rem;
   text-align: center;
   scroll-margin-top: 6.5rem;
-  background: #0c0c0e;
-  border: 1px solid rgba(255, 69, 58, .28);
+  background: #0c1824;
+  border: 1px solid rgba(0, 214, 255, .28);
   border-radius: 28px;
   backdrop-filter: none;
   box-shadow: none;
@@ -521,7 +525,7 @@ html.cursor-on, html.cursor-on * { cursor: none; }
 html.cursor-on .cursor { display: block; }
 html.cursor-on .cursor.on {
   width: 44px; height: 44px; margin: -22px 0 0 -22px;
-  background: rgba(255,69,58,.18);
+  background: rgba(0,214,255,.18);
 }
 @media (max-width: 1100px) {
   .nav .clock { display: none; }
@@ -551,7 +555,7 @@ h2, .lede, .card h3, .card p, .job h3, .job .org, .about p {
   border-radius: 0;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid rgba(255, 69, 58, .18);
+  border-bottom: 1px solid rgba(0, 214, 255, .18);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   box-shadow: none;
@@ -561,7 +565,7 @@ h2, .lede, .card h3, .card p, .job h3, .job .org, .about p {
 .work .card:last-child,
 .jobs .job:last-child { border-bottom: 0; }
 .tools .card, .marks .mark {
-  border: 1px solid rgba(255, 69, 58, .18);
+  border: 1px solid rgba(0, 214, 255, .18);
   border-radius: 16px;
   padding: 1.2rem 1rem;
 }

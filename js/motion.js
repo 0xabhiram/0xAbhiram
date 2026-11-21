@@ -85,7 +85,7 @@
           b.x = Math.random();
         }
         ctx.beginPath();
-        ctx.fillStyle = 'rgba(255,69,58,' + b.a + ')';
+        ctx.fillStyle = 'rgba(0,214,255,' + b.a + ')';
         ctx.arc(b.x * box.w, b.y * box.h, b.r, 0, Math.PI * 2);
         ctx.fill();
       }

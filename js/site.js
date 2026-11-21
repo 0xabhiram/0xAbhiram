@@ -260,7 +260,7 @@
       ctx.fillRect(0, 0, W, H);
 
       ctx.save();
-      ctx.strokeStyle = 'rgba(255,69,58,0.055)';
+      ctx.strokeStyle = 'rgba(0,214,255,0.055)';
       ctx.lineWidth = 1;
       var gy = (t * 18) % 44;
       for (var y = -44; y < H + 44; y += 44) {
@@ -286,7 +286,7 @@
           g.x = Math.random() * W;
         }
         ctx.fillStyle = g.hot
-          ? 'rgba(255,69,58,' + g.a + ')'
+          ? 'rgba(0,214,255,' + g.a + ')'
           : 'rgba(244,241,236,' + g.a + ')';
         ctx.fillText(g.s, g.x, g.y);
       });
@@ -303,7 +303,7 @@
         ctx.moveTo(d.x, d.y);
         ctx.lineTo(d.x - d.vx * 2.2, d.y - d.len);
         ctx.strokeStyle = d.hot
-          ? 'rgba(255,69,58,0.28)'
+          ? 'rgba(0,214,255,0.28)'
           : 'rgba(210,214,220,0.16)';
         ctx.lineWidth = d.w;
         ctx.stroke();
@@ -313,7 +313,7 @@
         ctx.beginPath();
         ctx.ellipse(s.x, s.y, s.r * 1.8, s.r * 0.35, 0, 0, Math.PI * 2);
         ctx.strokeStyle = s.hot
-          ? 'rgba(255,69,58,' + s.a + ')'
+          ? 'rgba(0,214,255,' + s.a + ')'
           : 'rgba(210,214,220,' + s.a + ')';
         ctx.lineWidth = 1;
         ctx.stroke();
@@ -356,7 +356,7 @@
           var lx = (phone ? 12 : 28) + c * (colW + 24) + glitch;
           var nearScan = Math.abs(ly - scanY) < 14;
           if (line.hit && nearScan) {
-            ctx.fillStyle = 'rgba(255,69,58,0.08)';
+            ctx.fillStyle = 'rgba(0,214,255,0.08)';
             ctx.fillRect(lx - 8, ly - 14, colW * 0.92, 20);
           }
           var newest = i === lines.length - 1;
@@ -365,16 +365,16 @@
             : line.t;
           if (phone && shown.length > 38) shown = shown.slice(0, 38);
           ctx.fillStyle = line.hit
-            ? (nearScan ? 'rgba(255,90,70,0.55)' : 'rgba(255,69,58,0.32)')
+            ? (nearScan ? 'rgba(80,220,255,0.55)' : 'rgba(0,214,255,0.32)')
             : 'rgba(244,241,236,0.12)';
           ctx.fillText((c === 0 ? '› ' : '  ') + shown, lx, ly);
           if (newest && c === 0 && (t % 1) < 0.55) {
             var tw = ctx.measureText('› ' + shown).width;
-            ctx.fillStyle = 'rgba(255,69,58,0.85)';
+            ctx.fillStyle = 'rgba(0,214,255,0.85)';
             ctx.fillRect(lx + tw + 2, ly - 11, 7, 13);
           }
           if (line.hit && c === 0) {
-            ctx.strokeStyle = 'rgba(255,69,58,' + (0.18 + 0.18 * Math.sin(t * 3 + i)) + ')';
+            ctx.strokeStyle = 'rgba(0,214,255,' + (0.18 + 0.18 * Math.sin(t * 3 + i)) + ')';
             ctx.lineWidth = 1;
             bracket(lx - 10, ly - 15, Math.min(W - lx - 16, 420, colW * 0.86), 20, 6);
           }
@@ -392,14 +392,14 @@
 
       ctx.save();
       var g = ctx.createLinearGradient(0, scanY - 40, 0, scanY + 40);
-      g.addColorStop(0, 'rgba(255,69,58,0)');
-      g.addColorStop(0.45, 'rgba(255,69,58,0.05)');
-      g.addColorStop(0.5, 'rgba(255,210,180,0.18)');
-      g.addColorStop(0.55, 'rgba(255,69,58,0.05)');
-      g.addColorStop(1, 'rgba(255,69,58,0)');
+      g.addColorStop(0, 'rgba(0,214,255,0)');
+      g.addColorStop(0.45, 'rgba(0,214,255,0.05)');
+      g.addColorStop(0.5, 'rgba(190,245,255,0.18)');
+      g.addColorStop(0.55, 'rgba(0,214,255,0.05)');
+      g.addColorStop(1, 'rgba(0,214,255,0)');
       ctx.fillStyle = g;
       ctx.fillRect(0, scanY - 40, W, 80);
-      ctx.fillStyle = 'rgba(255,69,58,0.35)';
+      ctx.fillStyle = 'rgba(0,214,255,0.35)';
       ctx.fillRect(0, scanY, W, 1);
       ctx.restore();
 
@@ -410,7 +410,7 @@
         var pulse = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(t * 2.2 + i));
         var hx = phone ? W - 14 : W - 28;
         ctx.fillStyle = h.st === 'HIT' || h.st === 'PUB'
-          ? 'rgba(255,69,58,' + (0.35 + pulse * 0.35) + ')'
+          ? 'rgba(0,214,255,' + (0.35 + pulse * 0.35) + ')'
           : 'rgba(244,241,236,0.16)';
         ctx.beginPath();
         ctx.arc(hx, hy, phone ? 1.8 : 2.4, 0, Math.PI * 2);
@@ -418,7 +418,7 @@
         ctx.fillStyle = 'rgba(244,241,236,0.16)';
         ctx.fillText(h.ip, phone ? W - 118 : W - 168, hy + 3);
         ctx.fillStyle = h.st === 'HIT' || h.st === 'PUB'
-          ? 'rgba(255,69,58,0.45)'
+          ? 'rgba(0,214,255,0.45)'
           : 'rgba(244,241,236,0.18)';
         ctx.fillText(h.st, phone ? W - 38 : W - 52, hy + 3);
       });
@@ -426,19 +426,19 @@
       locks = locks.filter(function (L) { L.life -= 0.008; return L.life > 0; });
       locks.forEach(function (L) {
         ctx.font = (phone ? '9px' : '11px') + ' "IBM Plex Mono", ui-monospace, monospace';
-        ctx.fillStyle = 'rgba(255,69,58,' + (L.life * 0.35) + ')';
+        ctx.fillStyle = 'rgba(0,214,255,' + (L.life * 0.35) + ')';
         var lockT = 'LOCK  ' + L.text;
         if (phone && lockT.length > 34) lockT = lockT.slice(0, 34);
         ctx.fillText(lockT, 16, (phone ? 72 : 86) + (1 - L.life) * 18);
       });
 
-      ctx.strokeStyle = 'rgba(255,69,58,0.28)';
+      ctx.strokeStyle = 'rgba(0,214,255,0.28)';
       ctx.lineWidth = 1;
       var pad = phone ? 10 : 18, arm = phone ? 14 : 22;
       bracket(pad, pad + (phone ? 58 : 52), W - pad * 2, H - pad * 2 - (phone ? 56 : 70), arm);
 
       ctx.font = (phone ? '9px' : '10px') + ' "IBM Plex Mono", ui-monospace, monospace';
-      ctx.fillStyle = 'rgba(255,69,58,0.4)';
+      ctx.fillStyle = 'rgba(0,214,255,0.4)';
       ctx.fillText(phone ? 'ENG  0xABHIRAM   VAPT' : 'ENG  0xABHIRAM   MODE  VAPT   SCOPE  WEB / API / CLOUD', phone ? 14 : 28, H - (phone ? 20 : 22));
       ctx.fillStyle = 'rgba(244,241,236,0.18)';
       ctx.fillText(
