@@ -54,7 +54,7 @@
 
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  function drops(canvas, count, pace) {
+  function snow(canvas, count, pace) {
     if (!canvas) return;
     var ctx = canvas.getContext('2d');
     var bits = [];
@@ -111,6 +111,5 @@
     requestAnimationFrame(frame);
   }
 
-  drops(document.getElementById('heroDrops'), 135, 0.0016);
-  drops(document.getElementById('sideDrops'), 126, 0.00135);
+  snow(document.getElementById('heroDrops'), 150, 0.0018);
 })();
