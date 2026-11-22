@@ -480,8 +480,8 @@ html.motion .hero-copy > :nth-child(2) { animation-delay: .38s; }
 html.motion .hero-copy > :nth-child(3) { animation-delay: .56s; }
 html.motion .hero-copy > :nth-child(4) { animation-delay: .72s; }
 @keyframes arrive {
-  from { opacity: 0; filter: blur(8px); }
-  to { opacity: 1; filter: blur(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 html.motion .hero h1 .acc { animation: ember 3.2s ease-in-out 1.2s infinite; }
 @keyframes ember {
@@ -490,25 +490,22 @@ html.motion .hero h1 .acc { animation: ember 3.2s ease-in-out 1.2s infinite; }
 }
 html.motion .lift .piece {
   opacity: 0;
-  transform: translateY(16px);
-  filter: blur(6px);
+  transform: translateY(10px);
 }
 html.motion .lift.in .piece {
   opacity: 1;
   transform: none;
-  filter: blur(0);
-  transition: opacity .6s var(--ease), transform .6s var(--ease), filter .6s var(--ease);
+  transition: opacity .45s var(--ease), transform .45s var(--ease);
 }
 section:not(.hero) {
-  width: min(880px, calc(100% - 2.5rem));
-  margin: 4.5rem auto;
-  padding: 2.4rem 1.75rem 1.6rem;
-  text-align: center;
+  width: min(1100px, calc(100% - 2.5rem));
+  margin: 3.4rem auto;
+  padding: 0 0 0.4rem;
+  text-align: left;
   scroll-margin-top: 6.5rem;
-  background: #0c1824;
-  border: 1px solid rgba(0, 214, 255, .28);
-  border-radius: 28px;
-  backdrop-filter: none;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   box-shadow: none;
 }
 .cursor {
@@ -532,83 +529,219 @@ html.cursor-on .cursor.on {
   .links { gap: .75rem; }
   .links a { letter-spacing: .08em; font-size: .58rem; }
 }
-.sec-head { text-align: center; margin-bottom: 2.4rem; }
-h2, .lede, .card h3, .card p, .job h3, .job .org, .about p {
-  text-shadow: 0 2px 18px rgba(0,0,0,.9);
+.sec-head { text-align: left; margin-bottom: 1.2rem; }
+.sec-head h2, .about h2 {
+  max-width: none;
+  margin: 0;
+  text-align: left;
+  font-size: clamp(2rem, 4vw, 3.1rem);
 }
-.sec-head h2, .about h2 { max-width: 16ch; margin-inline: auto; }
 .sec-head h2 span, .about h2 span, h1 .acc { color: var(--accent); }
 .pill {
-  display: inline-flex; align-items: center;
-  border: 1px solid rgba(244,241,236,.16);
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(0, 214, 255, .35);
   border-radius: 999px;
-  padding: .35rem .8rem;
-  margin-bottom: 1rem;
-  font-family: var(--mono); font-size: .66rem;
-  letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
+  padding: .28rem .75rem;
+  margin-bottom: .7rem;
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(0, 214, 255, .08);
 }
-.sec-head .lede { margin-inline: auto; }
-.work, .jobs, .tools, .marks { display: grid; gap: 1rem; }
-.work { grid-template-columns: 1fr; }
-.tools, .marks { grid-template-columns: 1fr 1fr; }
+.sec-head .lede { margin: .5rem 0 0; text-align: left; max-width: 36rem; }
+.work, .jobs, .tools, .marks, #logList { display: grid; gap: .85rem; }
+.work { grid-template-columns: repeat(6, 1fr); }
+.work .card { grid-column: span 2; }
+.work .card:nth-child(4),
+.work .card:nth-child(5) { grid-column: span 3; }
+.tools, .marks, #logList { grid-template-columns: 1fr 1fr; }
+.jobs { grid-template-columns: repeat(3, 1fr); align-items: start; padding-bottom: .4rem; }
 .card, .job, .mark, .panel, .log {
-  border-radius: 0;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid rgba(0, 214, 255, .18);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  background: #0c1a28;
+  border: 1px solid rgba(0, 214, 255, .22);
+  border-radius: 22px;
   box-shadow: none;
-  padding: 1.25rem .4rem;
-  text-align: center;
+  text-align: left;
 }
-.work .card:last-child,
-.jobs .job:last-child { border-bottom: 0; }
+.work .card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 0 0 .2rem;
+  overflow: hidden;
+}
+.work .card .idx, .work .card h3, .work .card p { padding-inline: 1.05rem; }
+.work .card .idx { margin: .85rem 0 0; }
+.work .card h3 { margin: .3rem 0 0; }
+.work .card p { margin: .35rem 0 .85rem; text-align: left; }
+.shape {
+  height: 148px;
+  background: #07131e;
+}
+.shape svg { width: 100%; height: 100%; display: block; }
+.shape text {
+  fill: #d5dee6;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+.shape circle { fill: #00d6ff; }
+.shape .box, .shape .ticket {
+  fill: none;
+  stroke: rgba(0, 214, 255, .85);
+  stroke-width: 1.5;
+}
+.shape line { stroke: rgba(0, 214, 255, .35); stroke-width: 1.5; }
+.shape .draw, .shape .tick {
+  fill: none;
+  stroke: #00d6ff;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw 3.2s ease-in-out infinite;
+}
+.shape .late { animation-delay: .7s; }
+.shape .later { animation-delay: 1.3s; }
+.shape .blast {
+  fill: none;
+  stroke: #00d6ff;
+  stroke-width: 1.5;
+  transform-origin: 83px 70px;
+  animation: blast 2.8s ease-in-out infinite;
+}
+.shape .role { fill: #00d6ff; }
+.shape .r1 .tick { animation-delay: .15s; }
+.shape .r2 .tick { animation-delay: .55s; }
+.shape .r3 .tick { animation-delay: .95s; }
+.shape .r4 .tick { animation-delay: 1.35s; }
+@keyframes draw {
+  0% { stroke-dashoffset: 100; }
+  18% { stroke-dashoffset: 0; }
+  86% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 100; }
+}
+@keyframes blast {
+  0%, 12% { transform: scale(.35); opacity: 1; }
+  68%, 100% { transform: scale(5.4); opacity: .25; }
+}
+.job {
+  display: flex;
+  flex-direction: column;
+  padding: 1.15rem 1.1rem 1.2rem;
+  min-height: 100%;
+}
+.job:nth-child(2) { margin-top: 1.6rem; }
+.job .when { margin-bottom: .45rem; }
+.job h3, .job .org, .job ul, .job li { text-align: left; }
+.job ul { max-width: none; margin: .7rem 0 0; }
+.job li { padding-left: .9rem; }
+.job li::before { display: block; }
 .tools .card, .marks .mark {
-  border: 1px solid rgba(0, 214, 255, .18);
-  border-radius: 16px;
-  padding: 1.2rem 1rem;
+  display: block;
+  padding: 1.15rem 1.15rem 1.25rem;
+  border-radius: 22px;
 }
-.panel header, .kv, .kv div { text-align: center; justify-content: center; }
-.job ul, .job li, .log, .panel, .kv, .note, .lede, h2, .card p, .about p, .mark p {
-  text-align: center;
-}
-.lede, h2, .prose, .note { margin-inline: auto; }
-.job ul { max-width: 38rem; margin: .8rem auto 0; }
-.job li { padding-left: 0; }
-.job li::before { display: none; }
+.mark .st { margin-bottom: .55rem; }
+.mark h3, .mark p { text-align: left; }
+.mark p { margin-top: .35rem; }
 .log {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: .35rem;
-  background: transparent;
-  border-radius: 0;
+  padding: 1.15rem;
+  min-height: 150px;
+  text-align: left;
 }
-.pills { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1rem; }
+.log h3, .log p { text-align: left; }
+.log .go { margin-top: auto; }
+.panel { border-radius: 22px; padding: 1.15rem 1.2rem; }
+.panel header, .kv, .kv div, .note, .lede, h2, .about p { text-align: left; justify-content: flex-start; }
+.pills { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: .45rem; margin-top: .85rem; }
 .pills span {
-  border: 1px solid rgba(244,241,236,.12);
+  border: 1px solid rgba(0, 214, 255, .3);
   border-radius: 999px;
-  padding: .35rem .7rem;
-  font-size: .82rem;
+  padding: .32rem .7rem;
+  font-size: .8rem;
   color: var(--fg);
+  background: rgba(0, 214, 255, .07);
 }
 .about {
   display: grid;
-  grid-template-columns: minmax(180px, 280px) 1fr;
-  gap: 2.5rem;
+  grid-template-columns: 220px 1fr;
+  gap: 1.3rem 1.6rem;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: 1.3rem;
+  background:
+    radial-gradient(380px 160px at 12% 0%, rgba(0, 214, 255, .22), transparent 70%),
+    #0c1a28;
+}
+.about::after {
+  content: "";
+  position: absolute;
+  width: 160px; height: 160px;
+  right: -36px; bottom: -48px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 214, 255, .45);
+  animation: spin 16s linear infinite;
+  pointer-events: none;
 }
 .about img {
-  width: 100%;
-  height: auto;
-  border-radius: 28px;
+  width: 220px;
+  height: 250px;
+  border-radius: 18px;
   object-fit: cover;
 }
-.about p { color: var(--muted); margin-top: .9rem; }
-.about .stats { margin-top: 1.8rem; grid-template-columns: 1fr 1fr; }
-.socials, .actions { justify-content: center; }
+.about p { color: var(--muted); margin-top: .75rem; }
+.about .stats {
+  grid-column: 1 / -1;
+  margin-top: .2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  border-top: 1px solid rgba(0, 214, 255, .2);
+  padding-top: 1rem;
+}
+.socials, .actions { justify-content: flex-start; }
+.hero .actions {
+  justify-content: center;
+  width: auto;
+  margin-inline: auto;
+}
 .socials { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+.dial {
+  position: fixed;
+  z-index: 40;
+  right: 1.15rem;
+  bottom: 1.15rem;
+  width: 46px;
+  height: 46px;
+  pointer-events: none;
+}
+.dial svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.dial-track, .dial-val { fill: none; stroke-width: 2; }
+.dial-track { stroke: rgba(0, 214, 255, .22); }
+.dial-val { stroke: #00d6ff; stroke-linecap: round; }
+@media (prefers-reduced-motion: no-preference) {
+  .work .card, .job, .mark, .tools .card, .log {
+    transition: border-color .25s var(--ease), transform .25s var(--ease);
+  }
+  html.motion .lift.in .work .card:hover,
+  html.motion .lift.in .job:hover,
+  html.motion .lift.in .mark:hover,
+  html.motion .lift.in .tools .card:hover,
+  html.motion .lift.in .log:hover {
+    border-color: rgba(0, 214, 255, .7);
+    transform: translateY(-4px);
+  }
+}
 .giant {
   font-size: clamp(3.4rem, 13vw, 9rem);
   font-weight: 600;
@@ -618,18 +751,18 @@ h2, .lede, .card h3, .card p, .job h3, .job .org, .about p {
   color: rgba(244,241,236,.08);
   margin-bottom: 1rem;
 }
-.foot {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
 @media (max-width: 800px) {
-  .tools, .marks, .about { grid-template-columns: 1fr; }
-  .about img { max-width: 240px; margin-inline: auto; }
+  .work, .jobs, .tools, .marks, #logList, .about { grid-template-columns: 1fr; }
+  .work .card,
+  .work .card:nth-child(4),
+  .work .card:nth-child(5) { grid-column: auto; }
+  .job:nth-child(2) { margin-top: 0; }
+  .about .stats { grid-template-columns: 1fr 1fr; }
+  .about img { width: 100%; height: 210px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .piece { opacity: 1; filter: none; transform: none; }
+  .shape .draw, .shape .tick, .shape .blast, .about::after { animation: none; stroke-dashoffset: 0; }
   .hero h1 .acc { animation: none; }
   .scrollcue { animation: none; }
   html.cursor-on, html.cursor-on * { cursor: auto; }

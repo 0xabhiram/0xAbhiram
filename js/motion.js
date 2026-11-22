@@ -38,6 +38,20 @@
   addEventListener('scroll', revealVisible, { passive: true });
   addEventListener('resize', revealVisible);
 
+  var ring = document.getElementById('scrollRing');
+  if (ring) {
+    var circ = 2 * Math.PI * 16;
+    ring.style.strokeDasharray = String(circ);
+    function paintRing() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      ring.style.strokeDashoffset = String(circ * (1 - p));
+    }
+    paintRing();
+    addEventListener('scroll', paintRing, { passive: true });
+    addEventListener('resize', paintRing);
+  }
+
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   function drops(canvas, count, pace) {
