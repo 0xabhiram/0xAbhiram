@@ -250,6 +250,7 @@ section { padding: 7rem 0 1rem; border-top: 1px solid var(--line); }
   display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
   padding: 1.6rem var(--pad) calc(2rem + env(safe-area-inset-bottom));
   border-top: 1px solid var(--line);
+  background: #030406;
   color: var(--faint); font-size: .65rem; letter-spacing: .12em;
 }
 
@@ -373,10 +374,30 @@ section { padding: 7rem 0 1rem; border-top: 1px solid var(--line); }
 }
 .nav-cta { border-radius: 999px; padding-inline: 1.05rem; }
 main {
+  position: relative;
   max-width: none;
   width: 100%;
   margin: 0;
   padding: 0 0 5rem;
+  background: #030406;
+}
+main::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: -15%;
+  right: -15%;
+  top: 100dvh;
+  bottom: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(460px 200px at 28% 22%, rgba(32, 64, 88, .55), transparent 70%),
+    radial-gradient(420px 180px at 74% 58%, rgba(18, 42, 64, .5), transparent 72%);
+  animation: dusk 20s ease-in-out infinite alternate;
+}
+@keyframes dusk {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(3%, 2.5%, 0); }
 }
 section:not(.hero) {
   width: min(1040px, calc(100% - 2 * var(--pad)));
@@ -387,7 +408,7 @@ section:not(.hero) {
 #sideDrops {
   position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 5;
   width: 100%;
   height: 100%;
   pointer-events: none;
@@ -498,6 +519,9 @@ html.motion .lift.in .piece {
   transition: opacity .45s var(--ease), transform .45s var(--ease);
 }
 section:not(.hero) {
+  --accent: #00d6ff;
+  position: relative;
+  z-index: 1;
   width: min(1100px, calc(100% - 2.5rem));
   margin: 3.4rem auto;
   padding: 0 0 0.4rem;
@@ -540,7 +564,7 @@ html.cursor-on .cursor.on {
 .pill {
   display: inline-flex;
   align-items: center;
-  border: 1px solid rgba(0, 214, 255, .35);
+  border: 1px solid rgba(0, 214, 255, .5);
   border-radius: 999px;
   padding: .28rem .75rem;
   margin-bottom: .7rem;
@@ -549,7 +573,7 @@ html.cursor-on .cursor.on {
   letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--accent);
-  background: rgba(0, 214, 255, .08);
+  background: rgba(0, 214, 255, .14);
 }
 .sec-head .lede { margin: .5rem 0 0; text-align: left; max-width: 36rem; }
 .work, .jobs, .tools, .marks, #logList { display: grid; gap: .85rem; }
@@ -560,8 +584,8 @@ html.cursor-on .cursor.on {
 .tools, .marks, #logList { grid-template-columns: 1fr 1fr; }
 .jobs { grid-template-columns: repeat(3, 1fr); align-items: start; padding-bottom: .4rem; }
 .card, .job, .mark, .panel, .log {
-  background: #0c1a28;
-  border: 1px solid rgba(0, 214, 255, .22);
+  background: #07090c;
+  border: 1px solid rgba(0, 214, 255, .55);
   border-radius: 22px;
   box-shadow: none;
   text-align: left;
@@ -578,8 +602,15 @@ html.cursor-on .cursor.on {
 .work .card h3 { margin: .3rem 0 0; }
 .work .card p { margin: .35rem 0 .85rem; text-align: left; }
 .shape {
-  height: 148px;
-  background: #07131e;
+  height: 168px;
+  background: #030406;
+  overflow: hidden;
+}
+.shape img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .shape svg { width: 100%; height: 100%; display: block; }
 .shape text {
@@ -588,16 +619,29 @@ html.cursor-on .cursor.on {
   font-size: 11px;
   letter-spacing: .08em;
 }
-.shape circle { fill: #00d6ff; }
+.shape circle { fill: var(--accent); }
+.shape .link, .shape .kill {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.shape .reach {
+  fill: none;
+  stroke: rgba(0, 214, 255, .75);
+  stroke-width: 1.25;
+}
+.stat-word { font-size: 1.35rem; letter-spacing: -.03em; line-height: 1.15; }
 .shape .box, .shape .ticket {
   fill: none;
-  stroke: rgba(0, 214, 255, .85);
+  stroke: var(--accent);
   stroke-width: 1.5;
 }
-.shape line { stroke: rgba(0, 214, 255, .35); stroke-width: 1.5; }
+.shape line { stroke: rgba(0, 214, 255, .55); stroke-width: 1.5; }
 .shape .draw, .shape .tick {
   fill: none;
-  stroke: #00d6ff;
+  stroke: var(--accent);
   stroke-width: 1.75;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -609,12 +653,12 @@ html.cursor-on .cursor.on {
 .shape .later { animation-delay: 1.3s; }
 .shape .blast {
   fill: none;
-  stroke: #00d6ff;
+  stroke: var(--accent);
   stroke-width: 1.5;
   transform-origin: 83px 70px;
   animation: blast 2.8s ease-in-out infinite;
 }
-.shape .role { fill: #00d6ff; }
+.shape .role { fill: var(--accent); }
 .shape .r1 .tick { animation-delay: .15s; }
 .shape .r2 .tick { animation-delay: .55s; }
 .shape .r3 .tick { animation-delay: .95s; }
@@ -664,12 +708,12 @@ html.cursor-on .cursor.on {
 .panel header, .kv, .kv div, .note, .lede, h2, .about p { text-align: left; justify-content: flex-start; }
 .pills { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: .45rem; margin-top: .85rem; }
 .pills span {
-  border: 1px solid rgba(0, 214, 255, .3);
+  border: 1px solid rgba(0, 214, 255, .5);
   border-radius: 999px;
   padding: .32rem .7rem;
   font-size: .8rem;
   color: var(--fg);
-  background: rgba(0, 214, 255, .07);
+  background: rgba(0, 214, 255, .14);
 }
 .about {
   display: grid;
@@ -681,19 +725,10 @@ html.cursor-on .cursor.on {
   border-radius: 28px;
   padding: 1.3rem;
   background:
-    radial-gradient(380px 160px at 12% 0%, rgba(0, 214, 255, .22), transparent 70%),
-    #0c1a28;
+    radial-gradient(380px 160px at 12% 0%, rgba(0, 214, 255, .16), transparent 70%),
+    #07090c;
 }
-.about::after {
-  content: "";
-  position: absolute;
-  width: 160px; height: 160px;
-  right: -36px; bottom: -48px;
-  border-radius: 50%;
-  border: 1px dashed rgba(0, 214, 255, .45);
-  animation: spin 16s linear infinite;
-  pointer-events: none;
-}
+.about::after { content: none; }
 .about img {
   width: 220px;
   height: 250px;
@@ -706,7 +741,7 @@ html.cursor-on .cursor.on {
   margin-top: .2rem;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  border-top: 1px solid rgba(0, 214, 255, .2);
+  border-top: 1px solid rgba(0, 214, 255, .35);
   padding-top: 1rem;
 }
 .socials, .actions { justify-content: flex-start; }
@@ -727,7 +762,7 @@ html.cursor-on .cursor.on {
 }
 .dial svg { width: 100%; height: 100%; transform: rotate(-90deg); }
 .dial-track, .dial-val { fill: none; stroke-width: 2; }
-.dial-track { stroke: rgba(0, 214, 255, .22); }
+.dial-track { stroke: rgba(0, 214, 255, .35); }
 .dial-val { stroke: #00d6ff; stroke-linecap: round; }
 @media (prefers-reduced-motion: no-preference) {
   .work .card, .job, .mark, .tools .card, .log {
@@ -738,7 +773,7 @@ html.cursor-on .cursor.on {
   html.motion .lift.in .mark:hover,
   html.motion .lift.in .tools .card:hover,
   html.motion .lift.in .log:hover {
-    border-color: rgba(0, 214, 255, .7);
+    border-color: rgba(0, 214, 255, .85);
     transform: translateY(-4px);
   }
 }
@@ -762,7 +797,8 @@ html.cursor-on .cursor.on {
 }
 @media (prefers-reduced-motion: reduce) {
   .piece { opacity: 1; filter: none; transform: none; }
-  .shape .draw, .shape .tick, .shape .blast, .about::after { animation: none; stroke-dashoffset: 0; }
+  .shape .draw, .shape .tick, .shape .blast, .about::after, main::before { animation: none; stroke-dashoffset: 0; }
+  .shape .mover { display: none; }
   .hero h1 .acc { animation: none; }
   .scrollcue { animation: none; }
   html.cursor-on, html.cursor-on * { cursor: auto; }

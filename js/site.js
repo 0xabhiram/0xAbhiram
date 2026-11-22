@@ -31,7 +31,7 @@
     var target = +el.dataset.t, v = 0, step = Math.max(1, Math.ceil(target / 46));
     var t = setInterval(function () {
       v = Math.min(v + step, target);
-      el.textContent = v;
+      el.textContent = v + (el.dataset.plus ? '+' : '');
       if (v >= target) clearInterval(t);
     }, 24);
   });

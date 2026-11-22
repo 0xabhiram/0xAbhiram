@@ -111,6 +111,6 @@
     requestAnimationFrame(frame);
   }
 
-  drops(document.getElementById('heroDrops'), 150, 0.0018);
-  drops(document.getElementById('sideDrops'), 100, 0.0013);
+  drops(document.getElementById('heroDrops'), 135, 0.0016);
+  drops(document.getElementById('sideDrops'), 126, 0.00135);
 })();
